@@ -28,13 +28,11 @@ npm run dev
 ```
 
 Use `npm run build` to produce a production bundle. The project can be deployed directly to Vercel or Netlify.
+## Project Structure
 
-## Structure
-
+```text
 learnsphere-app/
-│
 ├── public/
-│
 ├── src/
 │   ├── assets/
 │   ├── components/
@@ -44,16 +42,13 @@ learnsphere-app/
 │   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
-│
 ├── .gitignore
 ├── README.md
-├── eslint.config.js
 ├── index.html
 ├── package.json
-├── package-lock.json
 └── vite.config.js
 
-## Future improvements
+## Future improvement
 
 Connect courses and learner profiles to an authenticated API, add lesson-level routes, and allow certificates to be downloaded.
 
