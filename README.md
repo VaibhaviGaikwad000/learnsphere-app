@@ -12,7 +12,13 @@ A responsive, frontend-only learning dashboard built for a college assignment. I
 
 ## Stack
 
-React 19, Vite, JavaScript, Tailwind CSS v4, React Icons, Google Fonts, and Local Storage.
+React 19
+Vite
+JavaScript
+Tailwind CSS v4
+React Icons
+Google Fonts
+Local Storage.
 
 ## Run locally
 
@@ -25,12 +31,30 @@ Use `npm run build` to produce a production bundle. The project can be deployed 
 
 ## Structure
 
-`src/components` contains the reusable UI; `src/data/courses.js` contains the course catalogue; `src/hooks` provides persistence; `src/utils` holds shared view helpers.
+learnsphere-app/
+│
+├── public/
+│
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── data/
+│   ├── hooks/
+│   ├── utils/
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── .gitignore
+├── README.md
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.js
 
 ## Future improvements
 
 Connect courses and learner profiles to an authenticated API, add lesson-level routes, and allow certificates to be downloaded.
 
-## License
 
-MIT
