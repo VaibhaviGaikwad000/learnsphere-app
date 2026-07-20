@@ -5,10 +5,11 @@ import {
   FiLinkedin,
   FiMail,
 } from "react-icons/fi";
+import { PAGE_PADDING } from "../utils/constants";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-white px-4 py-12 dark:border-slate-800 dark:bg-slate-950 sm:px-6 lg:px-8">
+    <footer className={`border-t border-slate-200 bg-white ${PAGE_PADDING} py-12 dark:border-slate-800 dark:bg-slate-950`}>
       <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
         <div>
           <a

@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { FiBookOpen, FiMenu, FiSearch, FiX } from "react-icons/fi";
 import DarkModeToggle from "./DarkModeToggle";
+import NotificationButton from "./NotificationButton";
+import NotificationPanel from "./NotificationPanel";
+import { PAGE_PADDING } from "../utils/constants";
 const links = ["Home", "Explore Courses", "My Learning", "Profile"];
 export default function Navbar({ theme, setTheme }) {
   const [open, setOpen] = useState(false);
+  const [notificationsOpen, setNotificationsOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+    <>
+      <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+      <div className={`mx-auto flex h-16 max-w-7xl items-center justify-between ${PAGE_PADDING}`}>
         <a
           href="#top"
-          className="flex items-center gap-2 font-display text-xl font-bold text-slate-900 dark:text-white"
+          className="flex min-w-0 items-center gap-2 font-display text-xl font-bold text-slate-900 dark:text-white"
         >
           <span className="grid h-8 w-8 place-items-center rounded-md bg-indigo-600 text-white">
             <FiBookOpen />
           </span>
-          LearnSphere
+          <span className="hidden min-[360px]:inline">LearnSphere</span>
         </a>
         <nav className="hidden items-center gap-7 lg:flex">
           {links.map((link, index) => (
@@ -27,7 +32,7 @@ export default function Navbar({ theme, setTheme }) {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-1">
+        <div className="flex shrink-0 items-center gap-1">
           <a
             aria-label="Search courses"
             href="#explore"
@@ -35,10 +40,17 @@ export default function Navbar({ theme, setTheme }) {
           >
             <FiSearch />
           </a>
-          <DarkModeToggle theme={theme} setTheme={setTheme} />
-          <div className="ml-1 grid h-8 w-8 place-items-center rounded-full bg-violet-100 text-xs font-bold text-violet-700 dark:bg-violet-950 dark:text-violet-300">
-        VG
+          <div className="relative">
+            <NotificationButton
+              onClick={() => setNotificationsOpen(!notificationsOpen)}
+            />
+            {notificationsOpen && (
+              <NotificationPanel
+                onClose={() => setNotificationsOpen(false)}
+              />
+            )}
           </div>
+          <DarkModeToggle theme={theme} setTheme={setTheme} />
           <button
             aria-label="Toggle navigation menu"
             onClick={() => setOpen(!open)}
@@ -62,6 +74,7 @@ export default function Navbar({ theme, setTheme }) {
           ))}
         </nav>
       )}
-    </header>
+      </header>
+    </>
   );
 }

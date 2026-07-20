@@ -1,9 +1,10 @@
 import CourseCard from "./CourseCard";
+import { PAGE_PADDING } from "../utils/constants";
 export default function ContinueLearning({ courses, toggleFavorite }) {
   return (
     <section
       id="learning"
-      className="scroll-mt-20 bg-white px-4 py-16 dark:bg-slate-900/40 sm:px-6 lg:px-8"
+      className={`scroll-mt-20 bg-white ${PAGE_PADDING} py-16 dark:bg-slate-900/40`}
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-8 flex items-end justify-between">

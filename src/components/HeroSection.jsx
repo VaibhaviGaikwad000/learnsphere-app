@@ -1,18 +1,26 @@
 import { FiArrowRight, FiPlayCircle } from "react-icons/fi";
+import { PAGE_PADDING } from "../utils/constants";
+import learningHeroBackground from "../assets/learning-hero-background.png";
 
 export default function HeroSection({ onExplore }) {
   return (
     <section
       id="top"
-      className="overflow-hidden bg-gradient-to-br from-indigo-700 via-indigo-600 to-violet-700 px-4 py-16 text-white sm:px-6 lg:px-8 lg:py-24"
+      className={`relative isolate overflow-hidden bg-slate-950 ${PAGE_PADDING} py-16 text-white lg:py-24`}
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
+      <img
+        src={learningHeroBackground}
+        alt=""
+        className="absolute inset-0 z-0 h-full w-full object-cover object-center"
+      />
+      <div className="absolute inset-0 z-10 bg-slate-950/65" />
+      <div className="relative z-20 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.1fr_.9fr]">
         <div>
           <p className="mb-4 text-sm font-semibold text-indigo-100">
             YOUR LEARNING SPACE
           </p>
           <h1 className="font-display text-4xl font-bold leading-tight sm:text-5xl">
-            Welcome back, Vaibhavi.
+            Welcome back, Students.
           </h1>
           <p className="mt-5 max-w-xl text-base leading-7 text-indigo-100 sm:text-lg">
             Pick up where you left off, build momentum, and keep growing one

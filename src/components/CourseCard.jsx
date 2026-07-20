@@ -1,16 +1,21 @@
+import { useState } from "react";
 import { FiArrowRight, FiClock, FiStar, FiUsers } from "react-icons/fi";
+import CourseDetailsModal from "./CourseDetailsModal";
 import FavoriteButton from "./FavoriteButton";
-import { STATUS_STYLES } from "../utils/constants";
+import { PRIMARY_BUTTON_CLASS, STATUS_STYLES } from "../utils/constants";
 import { formatStudents } from "../utils/helpers";
 export default function CourseCard({
   course,
   toggleFavorite,
   compact = false,
 }) {
+  const [detailsOpen, setDetailsOpen] = useState(false);
+
   return (
-    <article
-      className={`group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 ${compact ? "min-w-[285px]" : ""}`}
-    >
+    <>
+      <article
+        className={`group overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900 ${compact ? "min-w-[285px]" : ""}`}
+      >
       <div className="relative h-40 overflow-hidden">
         <img
           loading="lazy"
@@ -39,11 +44,11 @@ export default function CourseCard({
             {course.difficulty}
           </span>
         </div>
-        <h3 className="mt-4 font-display text-lg font-bold text-slate-900 dark:text-white">
+        <h3 className="mt-4 break-words font-display text-lg font-bold text-slate-900 dark:text-white">
           {course.title}
         </h3>
         {!compact && (
-          <p className="mt-2 min-h-10 text-sm leading-5 text-slate-500 dark:text-slate-400">
+          <p className="mt-2 min-h-10 break-words text-sm leading-5 text-slate-500 dark:text-slate-400">
             {course.description}
           </p>
         )}
@@ -76,7 +81,14 @@ export default function CourseCard({
             />
           </div>
         </div>
-        <button className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-700">
+        <button
+          type="button"
+          onClick={() => setDetailsOpen(true)}
+          className="mt-5 inline-flex w-full items-center justify-center rounded-md border border-indigo-600 px-4 py-2.5 text-sm font-semibold text-indigo-600 transition hover:bg-indigo-50 dark:text-indigo-400 dark:hover:bg-indigo-950/40"
+        >
+          View Details
+        </button>
+        <button className={`mt-3 inline-flex w-full items-center justify-center gap-2 ${PRIMARY_BUTTON_CLASS}`}>
           {course.status === "Completed"
             ? "Review course"
             : course.status === "Locked"
@@ -85,6 +97,13 @@ export default function CourseCard({
           <FiArrowRight />
         </button>
       </div>
-    </article>
+      </article>
+      {detailsOpen && (
+        <CourseDetailsModal
+          course={course}
+          onClose={() => setDetailsOpen(false)}
+        />
+      )}
+    </>
   );
 }

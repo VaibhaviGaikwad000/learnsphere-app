@@ -10,6 +10,7 @@ import CourseGrid from "./components/CourseGrid";
 import Footer from "./components/footer";
 import useLocalStorage from "./hooks/useLocalStorage";
 import courses from "./data/courses";
+import { PAGE_PADDING } from "./utils/constants";
 
 function App() {
   const [theme, setTheme] = useLocalStorage(
@@ -101,7 +102,7 @@ function App() {
         />
         <section
           id="explore"
-          className="scroll-mt-20 px-4 py-16 sm:px-6 lg:px-8"
+          className={`scroll-mt-20 ${PAGE_PADDING} py-16`}
         >
           <div className="mx-auto max-w-7xl">
             <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">

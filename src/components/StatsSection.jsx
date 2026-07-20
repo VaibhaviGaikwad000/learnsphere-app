@@ -1,5 +1,6 @@
 import { FiAward, FiBookOpen, FiCheckCircle, FiClock } from "react-icons/fi";
 import StatsCard from "./StatsCard";
+import { PAGE_PADDING } from "../utils/constants";
 export default function StatsSection({ courses }) {
   const stats = [
     {
@@ -32,7 +33,7 @@ export default function StatsSection({ courses }) {
     },
   ];
   return (
-    <section className="px-4 py-10 sm:px-6 lg:px-8">
+    <section className={`${PAGE_PADDING} py-10`}>
       <div className="mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat) => (
           <StatsCard key={stat.label} {...stat} />
